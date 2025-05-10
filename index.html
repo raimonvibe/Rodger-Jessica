@@ -48,17 +48,24 @@ opacity: 1;
 }
 }
 
-#welcome-screen {
-position: fixed;
-width: 100%;
-height: 100vh;
-background: #1e3c72;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-z-index: 20;
+/* In your <style> tag, find and modify #welcome-screen like this: */
+    #welcome-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh; /* MODIFIED: Allow height to grow beyond viewport */
+  /* height: 100vh; */ /* Original line, either remove or ensure min-height takes precedence */
+  overflow-y: auto;   /* ADDED: Enable vertical scrolling if content overflows */
+  background: #1e3c72;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 20;
+  padding: 20px;      /* ADDED/MODIFIED: Provides padding on all sides */
+  box-sizing: border-box; /* ADDED (or ensure it's global via * selector, which you have) */
 }
 
 #welcome-screen img {
@@ -95,9 +102,10 @@ animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
 margin: 25px 0;
 }
 
+/* Find and modify @keyframes typing: */
 @keyframes typing {
-from { width: 0 }
-to { width: 95% }
+  from { width: 0 }
+  to { width: 100% } /* MODIFIED: Was 95%, 100% uses the full width of its container (respecting parent padding) */
 }
 
 @keyframes blink {
@@ -206,6 +214,14 @@ transform: translateY(0);
 50% {
 transform: translateY(-10px);
 }
+}
+
+/* Add this new media query to your <style> tag: */
+    @media (max-width: 380px) { /* You can adjust this 380px breakpoint as needed */
+  .typing-text {
+    font-size: 1.3em; /* Reduce font size from 1.7em for smaller screens */
+    /* This helps "Happy Birthday My Love" fit horizontally */
+  }
 }
 </style>
 </head>
