@@ -48,33 +48,100 @@ opacity: 1;
 }
 }
 
+/* MODIFIED styles for #welcome-screen */
 #welcome-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
-  overflow-y: auto;
+  height: 100vh; /* Fallback for older browsers */
+  height: 100svh; /* Uses the 'small viewport height', best for fitting content without browser bars interfering */
+  overflow-y: auto; /* Safety net: allows scrolling if content ABSOLUTELY cannot fit */
   background: #1e3c72;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */ /* This was the previous setting */
-  justify-content: space-between; /* MODIFIED: Change to this */
+  justify-content: space-between; /* Distributes space: pushes image to top, button to bottom */
   align-items: center;
   text-align: center;
   z-index: 20;
-  padding: 20px;
+  padding: 15px;      /* Reduced overall padding to save space */
   box-sizing: border-box;
 }
 
+/* MODIFIED styles for the image within #welcome-screen */
 #welcome-screen img {
-width: 70vw;
-max-width: 280px;
-border-radius: 15px;
-object-fit: cover;
-filter: blur(12px);
-opacity: 0;
-animation: blurIn 3s ease-out forwards;
+  width: 70vw;
+  max-width: 260px;   /* Slightly reduced max-width */
+  max-height: 40vh;   /* IMPORTANT: Constrains the image's vertical height */
+                        /* This value might need tweaking based on your image's aspect ratio */
+  object-fit: cover;    /* Ensures image covers the space, may crop if aspect ratio mismatches */
+  border-radius: 15px;
+  /* Your existing animation properties for blurIn */
+  filter: blur(12px);
+  opacity: 0;
+  animation: blurIn 3s ease-out forwards;
+}
+
+/* MODIFIED styles for .typing-text */
+.typing-text {
+  font-size: 1.7em; /* Base size, will be adjusted in media queries */
+  color: gold;
+  border-right: 2px solid #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+  margin: 15px 0;     /* Reduced vertical margins */
+}
+
+/* MODIFIED styles for #open-btn for compactness */
+#open-btn {
+  background: #ff66a3;
+  border: none;
+  padding: 12px 25px; /* Slightly reduced padding */
+  font-size: 18px;    /* Slightly reduced font size */
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff66a3;
+  transition: transform 0.3s;
+}
+
+/* Media query for smaller width screens (typical mobile portrait) */
+@media (max-width: 380px) {
+  #welcome-screen {
+    padding: 10px; /* Further reduce padding */
+  }
+  #welcome-screen img {
+    max-width: 240px;
+    max-height: 35vh; /* More restrictive image height */
+  }
+  .typing-text {
+    font-size: 1.3em; /* Reduce font size for smaller screens */
+    margin: 10px 0;   /* Further reduce margins */
+  }
+  #open-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+/* Media query for very short screens */
+@media (max-height: 600px) {
+  #welcome-screen {
+    padding: 8px; /* Minimal padding */
+  }
+  #welcome-screen img {
+    max-height: 30vh; /* Even more restrictive image height */
+  }
+  .typing-text {
+    font-size: 1.2em; /* Smaller font */
+    margin: 8px 0;    /* Minimal margins */
+  }
+  #open-btn {
+    padding: 8px 15px; /* Make button more compact */
+    font-size: 14px;
+  }
 }
 
 @keyframes blurIn {
@@ -90,17 +157,6 @@ transform: scale(1);
 }
 }
 
-.typing-text {
-font-size: 1.7em;
-color: gold;
-border-right: 2px solid #fff;
-white-space: nowrap;
-overflow: hidden;
-width: 0;
-animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
-margin: 25px 0;
-}
-
 /* Find and modify @keyframes typing: */
 @keyframes typing {
   from { width: 0 }
@@ -109,18 +165,6 @@ margin: 25px 0;
 
 @keyframes blink {
 50% { border-color: transparent }
-}
-
-#open-btn {
-background: #ff66a3;
-border: none;
-padding: 15px 30px;
-font-size: 20px;
-border-radius: 30px;
-color: white;
-cursor: pointer;
-box-shadow: 0 0 20px #ff66a3;
-transition: transform 0.3s;
 }
 
 #open-btn:hover {
@@ -215,13 +259,6 @@ transform: translateY(-10px);
 }
 }
 
-/* Add this new media query to your <style> tag: */
-    @media (max-width: 380px) { /* You can adjust this 380px breakpoint as needed */
-  .typing-text {
-    font-size: 1.3em; /* Reduce font size from 1.7em for smaller screens */
-    /* This helps "Happy Birthday My Love" fit horizontally */
-  }
-}
 </style>
 </head>
 <body>
