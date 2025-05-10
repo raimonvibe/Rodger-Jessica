@@ -48,24 +48,23 @@ opacity: 1;
 }
 }
 
-/* In your <style> tag, find and modify #welcome-screen like this: */
-    #welcome-screen {
+#welcome-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh; /* MODIFIED: Allow height to grow beyond viewport */
-  /* height: 100vh; */ /* Original line, either remove or ensure min-height takes precedence */
-  overflow-y: auto;   /* ADDED: Enable vertical scrolling if content overflows */
+  min-height: 100vh;
+  overflow-y: auto;
   background: #1e3c72;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */ /* This was the previous setting */
+  justify-content: space-between; /* MODIFIED: Change to this */
   align-items: center;
   text-align: center;
   z-index: 20;
-  padding: 20px;      /* ADDED/MODIFIED: Provides padding on all sides */
-  box-sizing: border-box; /* ADDED (or ensure it's global via * selector, which you have) */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 #welcome-screen img {
