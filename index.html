@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Rodger</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(135deg, #1e3c72, #2a5298);
+color: white;
+overflow-x: hidden;
+}
+
+#heart-container {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+pointer-events: none;
+z-index: 10;
+}
+
+.heart {
+position: absolute;
+font-size: 20px;
+animation: floatUp 5s linear infinite;
+color: #ff69b4;
+opacity: 0.7;
+z-index: 10;
+}
+
+@keyframes floatUp {
+0% {
+transform: translateY(0) scale(1);
+opacity: 0.7;
+}
+100% {
+transform: translateY(100vh) scale(1.5);
+opacity: 1;
+}
+}
+
+#welcome-screen {
+position: fixed;
+width: 100%;
+height: 100vh;
+background: #1e3c72;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+z-index: 20;
+}
+
+#welcome-screen img {
+width: 70vw;
+max-width: 280px;
+border-radius: 15px;
+object-fit: cover;
+filter: blur(12px);
+opacity: 0;
+animation: blurIn 3s ease-out forwards;
+}
+
+@keyframes blurIn {
+0% {
+filter: blur(12px);
+opacity: 0;
+transform: scale(1.05);
+}
+100% {
+filter: blur(0);
+opacity: 1;
+transform: scale(1);
+}
+}
+
+.typing-text {
+font-size: 1.7em;
+color: gold;
+border-right: 2px solid #fff;
+white-space: nowrap;
+overflow: hidden;
+width: 0;
+animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+margin: 25px 0;
+}
+
+@keyframes typing {
+from { width: 0 }
+to { width: 95% }
+}
+
+@keyframes blink {
+50% { border-color: transparent }
+}
+
+#open-btn {
+background: #ff66a3;
+border: none;
+padding: 15px 30px;
+font-size: 20px;
+border-radius: 30px;
+color: white;
+cursor: pointer;
+box-shadow: 0 0 20px #ff66a3;
+transition: transform 0.3s;
+}
+
+#open-btn:hover {
+transform: scale(1.1);
+}
+
+#main-content {
+display: none;
+padding: 20px;
+margin-top: 40px;
+text-align: center;
+}
+
+.birthday-message {
+border: 2px solid #ffccff;
+padding: 20px;
+margin-bottom: 30px;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 15px;
+}
+
+.birthday-message h2 {
+font-size: 1.8em;
+margin-bottom: 15px;
+color: #fffacd;
+}
+
+.birthday-message p {
+font-size: 1.1em;
+line-height: 1.6em;
+color: #f0f8ff;
+}
+
+.photo-gallery {
+display: flex;
+flex-direction: column;
+gap: 30px;
+align-items: center;
+margin-bottom: 30px;
+}
+
+.photo-card {
+text-align: center;
+animation: fadeUp 2s ease;
+}
+
+.photo-card img {
+width: 90vw;
+max-width: 300px;
+border-radius: 15px;
+box-shadow: 0 0 15px #ff80bf;
+}
+
+.photo-card p {
+margin-top: 10px;
+font-style: italic;
+color: #ffd9ec;
+}
+
+@keyframes fadeUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.share-btn {
+background: #ffd700;
+color: #000;
+padding: 12px 25px;
+border: none;
+border-radius: 25px;
+font-size: 16px;
+cursor: pointer;
+box-shadow: 0 0 10px #ffd700;
+}
+
+.share-btn:hover {
+transform: scale(1.05);
+}
+
+@keyframes bounce {
+0%, 100% {
+transform: translateY(0);
+}
+50% {
+transform: translateY(-10px);
+}
+}
+</style>
+</head>
+<body>
+
+<div id="heart-container"></div>
+
+<!-- Welcome Screen -->
+<div id="welcome-screen">
+<img src="Images/01.JPG" alt="Rodger">
+<h1 class="typing-text">Happy Birthday My Love</h1>
+<button id="open-btn"><span>🎁</span> Open</button>
+</div>
+
+<!-- Main Content -->
+<div id="main-content">
+<h1 style="font-size: 2.2em; margin-bottom: 20px; color: #fffacd;">Surprise for My King</h1>
+
+<div class="birthday-message">
+<h2>To My King Rodger</h2>
+<p>
+Happy Birthday My king, the most loving, hardworking, and inspiring man I know. <br>
+May your path be filled with endless blessings, laughter, peace, and joy. <br>
+I pray that as u mark this new age may your dreams come true and your heart remains as beautiful as it is. <br>
+You are my one and only, my love, and my greatest blessing. <br>I'm happy to walk this path with u<br>
+Have a birthday as amazing as your soul.
+</p>
+</div>
+
+<!-- Scroll Down Button -->
+<button onclick="scrollToGallery()" style="
+margin: 20px auto;
+display: block;
+background: transparent;
+border: 2px solid #fffacd;
+color: #fffacd;
+padding: 10px 20px;
+border-radius: 30px;
+font-size: 16px;
+cursor: pointer;
+animation: bounce 1.5s infinite;
+">
+↓ Scroll Down for More
+</button>
+
+<div class="photo-gallery">
+<div class="photo-card">
+<img src="Images/02.JPG" alt="Photo 1" />
+<p>Among thousands you are the best u're special </p>
+</div>
+<div class="photo-card">
+<img src="Images/03.JPG" alt="Photo 2" />
+<p>Every day with you is a beautiful adventure.</p>
+</div>
+<div class="photo-card">
+<img src="Images/04.JPG" alt="Photo 3" />
+<p>My heart chose you — and it was the best decision ever.</p>
+</div>
+</div>
+<div>
+<b>4rm Your Baby Jessica</b>
+</div>
+
+<button class="share-btn" onclick="navigator.share({ title: 'Happy Birthday Rodger', text: 'Check this out!', url: window.location.href })">
+Share this Page
+</button>
+
+<!-- Background Music -->
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg" />
+</audio>
+</div>
+
+<script>
+// Open page
+document.getElementById('open-btn').addEventListener('click', () => {
+document.getElementById('welcome-screen').style.display = 'none';
+document.getElementById('main-content').style.display = 'block';
+launchConfetti();
+});
+
+// Floating Hearts
+const container = document.getElementById('heart-container');
+setInterval(() => {
+const heart = document.createElement('div');
+heart.className = 'heart';
+heart.textContent = ['❤️','💕','💖','💘','💝'][Math.floor(Math.random()*5)];
+heart.style.left = Math.random() * 100 + 'vw';
+heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+container.appendChild(heart);
+setTimeout(() => heart.remove(), 5000);
+}, 400);
+
+// Confetti Burst
+function launchConfetti() {
+const duration = 1000;
+const end = Date.now() + duration;
+
+(function frame() {
+confetti({
+particleCount: 5,
+angle: 60,
+spread: 100,
+origin: { x: 0 }
+});
+confetti({
+particleCount: 5,
+angle: 120,
+spread: 100,
+origin: { x: 1 }
+});
+
+if (Date.now() < end) {
+requestAnimationFrame(frame);
+}
+})();
+}
+
+// Scroll to photo gallery
+function scrollToGallery() {
+document.querySelector('.photo-gallery').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+<!-- Confetti Library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>
