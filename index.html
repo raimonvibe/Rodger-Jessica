@@ -68,18 +68,14 @@ opacity: 1;
   box-sizing: border-box;
 }
 
-/* MODIFIED styles for the image within #welcome-screen */
 #welcome-screen img {
-  width: 70vw;
-  max-width: 260px;   /* Slightly reduced max-width */
-  max-height: 80vh;   /* IMPORTANT: Constrains the image's vertical height */
-                        /* This value might need tweaking based on your image's aspect ratio */
-  object-fit: cover;    /* Ensures image covers the space, may crop if aspect ratio mismatches */
-  border-radius: 15px;
-  /* Your existing animation properties for blurIn */
-  filter: blur(12px);
-  opacity: 0;
-  animation: blurIn 3s ease-out forwards;
+width: 70vw;
+max-width: 280px;
+border-radius: 15px;
+object-fit: cover;
+filter: blur(12px);
+opacity: 0;
+animation: blurIn 3s ease-out forwards;
 }
 
 /* MODIFIED styles for .typing-text */
